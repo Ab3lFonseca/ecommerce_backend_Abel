@@ -53,6 +53,11 @@ public class Produto {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
-
+    public String getImgURL() {
+        return imgURL;
+    }
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
     
 }
