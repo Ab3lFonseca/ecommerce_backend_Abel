@@ -59,5 +59,9 @@ public class Produto {
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
     }
+    public void coco(){
+        String aba = "ava";
+    
+    }
     
 }
