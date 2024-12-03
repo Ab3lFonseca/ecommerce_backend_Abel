@@ -8,6 +8,8 @@ public class PfhtmlApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PfhtmlApplication.class, args);
+
+		
 	}
 
 }

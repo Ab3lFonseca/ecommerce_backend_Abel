@@ -1,10 +1,12 @@
 package senac.PFHtml.controller;
  
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
  
 import java.util.List;
@@ -23,9 +25,16 @@ public class ProdutoController {
     private ProdutoRepository repository;
  
     @GetMapping
-    public List<Produto> get() {
-        return repository.findAll();
-    }    
+    public List<Produto> get(@RequestParam(required = false, defaultValue = "nome") String order,
+    @RequestParam(required = false) String filter) {
+
+        Sort s = Sort.by(order);
+        if(filter == null){
+            return repository.findAll(s);
+        }
+        return repository.findByNomeContains(filter, s);
+       
+    }        
  
     @PostMapping
     public Produto save(@RequestBody Produto produto) {
